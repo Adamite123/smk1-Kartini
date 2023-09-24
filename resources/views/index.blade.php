@@ -154,23 +154,25 @@
                   <h2>Jurusan SMKN 1 Kartini</h2>
                   <div id="team-slider" class="row row-sm row-30 justify-content-center swiper-container">
                       <div class="swiper-wrapper">
-                          
+
+                        @foreach ($jurusanData as $item)
                           <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight swiper-slide">
                               <!-- Team Classic-->
                               <article class="team-classic team-classic-lg">
-                                  <a class="team-classic-figure" href="#"><img src="images/team-11-420x424.jpg" alt="" width="420" height="424"/></a>
+                                  <a class="team-classic-figure" href="#"><img src="{{ asset($item->image) }}" alt="" width="420" style="height: 200px;
+                                    object-fit: cover;"/></a>
                                   <div class="team-classic-caption">
-                                      <h4 class="team-classic-name"><a href="#">Ryan Wilson</a></h4>
+                                      <h4 class="team-classic-name"><a href="#">{{ $item->judul }}</a></h4>
                                   </div>
                               </article>
                           </div>
+                        @endforeach
 
-                          <!-- Add more team members here as needed -->
                       </div>
       
                       <!-- Navigation Buttons -->
-                      <div class="swiper-button-next"></div>
-                      <div class="swiper-button-prev"></div>
+                      <div class="swiper-button-next" style="width: calc(var(--swiper-navigation-size)/ 20 * 20); !important"></div>
+                      <div class="swiper-button-prev" style="width: calc(var(--swiper-navigation-size)/ 20 * 20); !important"></div>
                   </div>
               </div>
           </section>
