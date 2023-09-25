@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Jurusan;
 
 class HomeController extends Controller
 {
@@ -24,7 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $jurusanData = Jurusan::all(); // Retrieve all existing data
-        return view('index', compact('jurusanData'));
+        return view('admin/admin_dashboard');
     }
 }

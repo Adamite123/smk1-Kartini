@@ -171,8 +171,8 @@
                       </div>
       
                       <!-- Navigation Buttons -->
-                      <div class="swiper-button-next" style="width: calc(var(--swiper-navigation-size)/ 20 * 20); !important"></div>
-                      <div class="swiper-button-prev" style="width: calc(var(--swiper-navigation-size)/ 20 * 20); !important"></div>
+                      <div class="swiper-button-next" style="width: calc(var(--swiper-navigation-size)/ 20 * 20) !important; right: var(--swiper-navigation-sides-offset,20px) !important;"></div>
+                      <div class="swiper-button-prev" style="width: calc(var(--swiper-navigation-size)/ 20 * 20) !important; left: var(--swiper-navigation-sides-offset,20px) !important;"></div>
                   </div>
               </div>
           </section>
@@ -225,16 +225,22 @@
       <!-- Latest Projects-->
       <section class="section section-sm section-fluid bg-default text-center" id="projects">
         <div class="container-fluid">
-          <h2 class="wow fadeInLeft">Kegiatan Terbaru</h2>
-          <p class="quote-jean wow fadeInRight" data-wow-delay=".1s">In our portfolio, you can browse the latest products developed for our clients for different corporate purposes. Our qualified team of interface designers and software developers is always ready to create something unique for you.</p>
+          <h2 class="wow fadeInLeft">{{$galeriData->first()->galeri_judul}}</h2>
+          <p class="quote-jean wow fadeInRight" data-wow-delay=".1s">{{$galeriData->first()->galeri_deskripsi}}</p>
           <div class="isotope-filters isotope-filters-horizontal">
             <button class="isotope-filters-toggle button button-md button-icon button-icon-right button-default-outline button-wapasha" data-custom-toggle="#isotope-3" data-custom-toggle-hide-on-blur="true" data-custom-toggle-disable-on-blur="true"><span class="icon fa fa-caret-down"></span>Filter</button>
             <ul class="isotope-filters-list" id="isotope-3">
+              
               <li><a class="active" href="#" data-isotope-filter="*" data-isotope-group="gallery">All</a></li>
-              <li><a href="#" data-isotope-filter="Type 1" data-isotope-group="gallery">mobile Apps</a></li>
-              <li><a href="#" data-isotope-filter="Type 2" data-isotope-group="gallery">Custom Software</a></li>
-              <li><a href="#" data-isotope-filter="Type 3" data-isotope-group="gallery">QA & Testing</a></li>
-              <li><a href="#" data-isotope-filter="Type 4" data-isotope-group="gallery">UX and Design</a></li>
+              
+              @foreach($galeriData as $galeri)
+                @foreach(explode(',', $galeri->galeri_kategori) as $kategori)
+                  <li><a href="#" data-isotope-filter="Type 1" data-isotope-group="gallery">
+                    {{ $kategori }}
+                  </a></li>
+                @endforeach
+              @endforeach
+
             </ul>
           </div>
           <div class="row row-30 isotope" data-isotope-layout="fitRows" data-isotope-group="gallery" data-lightgallery="group">
