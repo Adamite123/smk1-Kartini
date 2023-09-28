@@ -41,49 +41,53 @@
         </div>
         <!-- Spinner End -->
 
-
         <!-- Sidebar Start -->
         @include('admin.resource.sidebar')
         <!-- Sidebar End -->
-
 
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
             @include('admin.resource.navbar')
             <!-- Navbar End -->
-
-
             
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-light rounded h-100 p-4">
                             <h6 class="mb-4">Kegiatan Form</h6>
+
+                        <form method="POST" action="/galeri-kegiatan" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT') 
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput"
+                                <input name="judul" type="email" class="form-control" id="floatingInput"
                                     placeholder="name@example.com">
                                 <label for="floatingInput">Judul</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput"
+                                <input name="deskripsi" type="email" class="form-control" id="floatingInput"
                                     placeholder="name@example.com">
                                 <label for="floatingInput">Deksripsi Singkat</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <select class="form-select" id="floatingSelect"
-                                    aria-label="Floating label select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+
+                                <select name="kategori" id="floatingSelect" class="form-select">
+                                    @foreach(explode(',', $kategoriData->first()->galeri_kategori) as $kategori)
+                                        <option value="{{ $kategori }}">{{ $kategori }}</option>
+                                    @endforeach
                                 </select>
+                                
                                 <label for="floatingSelect">Jurusan</label>
                             </div>
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a comment here"
+                                <textarea name="artikel" class="form-control" placeholder="Leave a comment here"
                                     id="floatingTextarea" style="height: 150px;"></textarea>
                                 <label for="floatingTextarea">Isi Artikel</label>
+                            </div>
+
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -93,8 +97,9 @@
                             <h6 class="mb-4">File Input</h6>
                             <div>
                                 <label for="formFileLg" class="form-label">Large file input example</label>
-                                <input class="form-control form-control-lg" id="formFileLg" type="file">
+                                <input name="image" class="form-control form-control-lg" id="formFileLg" type="file">
                             </div>
+                        </form>
                         </div>
                     </div>
                 </div>

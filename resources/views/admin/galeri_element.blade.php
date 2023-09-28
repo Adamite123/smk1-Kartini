@@ -74,29 +74,32 @@
                 </div>
                 @endif
                 
-                <form method="POST" action="/jurusan" enctype="multipart/form-data">
+                <form method="POST" action="/galeri_element/{{ 1 }}" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT') 
+                
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Jurusan" value="{{ $kategoriData->first()->galeri_judul }}" required>
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Judul Galeri" value="{{ $kategoriData->first()->galeri_judul }}" required>
                         <label for="nama">Judul Galeri</label>
                     </div>
-
+                
                     <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="Leave a comment here" 
-                        id="floatingTextarea" style="height: 150px;">{{ $kategoriData->first()->galeri_deskripsi }}</textarea>
-                        <label for="floatingTextarea">Isi Artikel</label>
+                        <textarea class="form-control" name="deskripsi" placeholder="Leave a comment here" 
+                        id="deskripsi" style="height: 150px;">{{ $kategoriData->first()->galeri_deskripsi }}</textarea>
+                        <label for="deskripsi">Isi Artikel</label>
                     </div>
-
+                
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Jurusan" value="{{ $kategoriData->first()->galeri_kategori }}" required>
-                        <label for="nama">Kategori</label>
+                        <input type="text" class="form-control" id="kategori" name="kategori" placeholder="Kategori" value="{{ $kategoriData->first()->galeri_kategori }}" required>
+                        <label for="kategori">Kategori</label>
                         <small class="form-text text-muted" style="color: rgb(210, 8, 8) !important;">Tambahkan koma untuk setiap kategori berbeda.</small>
                     </div>
-
+                
                     <div class="mt-3">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
+                
 
             </div>
         </div>

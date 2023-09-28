@@ -21,17 +21,18 @@ Route::get('/', [indexController::class, 'index']);
 
 Route::get('/admin', [HomeController::class, 'index']);
 
-Route::get('/add-kegiatan', function () {
-    return view('admin/add-kegiatan');
-});
 
 // -- USER --
 Route::get('/add-user', [add_user::class, 'index'])->middleware('auth');
 Route::get('/user-edit', [add_user::class, 'index'])->name('users.edit')->middleware('auth');
 Route::delete('/user-delete/{user}', [add_user::class, 'destroy'])->name('users.destroy');
 
-// -- Galeri --
+
+// -- Galeri Kegiatan--
 Route::get('/add-element-galeri', [galeriController::class, 'index'])->middleware('auth');
+Route::put('/galeri_element/{id}', [galeriController::class, 'update'])->middleware('auth');
+
+Route::get('/add-kegiatan', [galeriController::class, 'add_kegiatan'])->middleware('auth');
 
 // -- JURUSAN --
 Route::get('/add-jurusan', [JurusanController::class, 'create'])->middleware('auth');

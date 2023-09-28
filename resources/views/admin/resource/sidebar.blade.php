@@ -25,7 +25,7 @@
                     <a href="signup.html" class="dropdown-item">Blog/News</a>
                     <a href="404.html" class="dropdown-item">Ganti Judul Jurusan</a>
                     <a href="blank.html" class="dropdown-item">Banner</a>
-                    <a href="blank.html" class="dropdown-item">Galeri Kegiatan</a>
+                    <a href="/add-element-galeri" class="dropdown-item">Galeri Kegiatan</a>
                     <a href="blank.html" class="dropdown-item">Awards</a>
                     <a href="blank.html" class="dropdown-item">Komentar Alumni</a>
                 </div>
